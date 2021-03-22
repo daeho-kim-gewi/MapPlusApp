@@ -3,23 +3,67 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0605B34525FA4D3200BAAA9B /* EarthSurfaceNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B34425FA4D3200BAAA9B /* EarthSurfaceNode.swift */; };
+		0605B34825FA596700BAAA9B /* EarthShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 0605B34725FA596700BAAA9B /* EarthShader.metal */; };
+		0605B34B25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B34A25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift */; };
+		0605B34F25FA662600BAAA9B /* MapCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B34E25FA662600BAAA9B /* MapCamera.swift */; };
+		0605B35225FB967800BAAA9B /* Bernburg GEWI.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 0605B35125FB967800BAAA9B /* Bernburg GEWI.gpx */; };
+		0605B35725FB994B00BAAA9B /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B35625FB994B00BAAA9B /* UserLocationManager.swift */; };
+		0605B35A25FB9DE600BAAA9B /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0605B35925FB9DE600BAAA9B /* MapKit.framework */; };
+		0605B35C25FB9E0700BAAA9B /* ExternalAccessory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0605B35B25FB9E0700BAAA9B /* ExternalAccessory.framework */; };
+		0605B36726009ED100BAAA9B /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B36626009ED100BAAA9B /* Node.swift */; };
+		0605B36A2600A7AA00BAAA9B /* SimdExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B3692600A7AA00BAAA9B /* SimdExtensions.swift */; };
+		0605B36E26024CAA00BAAA9B /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B36D26024CAA00BAAA9B /* Ray.swift */; };
+		0605B37126024D4600BAAA9B /* MapPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B37026024D4600BAAA9B /* MapPlane.swift */; };
+		0605B3742604DE4A00BAAA9B /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B3732604DE4A00BAAA9B /* Animatable.swift */; };
+		0666950825F8B733000202F6 /* PlusMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0666950725F8B733000202F6 /* PlusMapService.swift */; };
+		0666950C25F8B753000202F6 /* PlusMapServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0666950A25F8B753000202F6 /* PlusMapServiceView.swift */; };
+		0666951525F8C160000202F6 /* MapTiles in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951425F8C160000202F6 /* MapTiles */; };
+		0666951925F8C1A2000202F6 /* MapTiles in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951825F8C1A2000202F6 /* MapTiles */; };
+		0666951D25F8C7D8000202F6 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951C25F8C7D8000202F6 /* Gzip */; };
 		0670F7D325EE75CE004F1DF0 /* MapPlusAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7D225EE75CE004F1DF0 /* MapPlusAppApp.swift */; };
-		0670F7D525EE75CE004F1DF0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7D425EE75CE004F1DF0 /* ContentView.swift */; };
 		0670F7D725EE75CF004F1DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0670F7D625EE75CF004F1DF0 /* Assets.xcassets */; };
 		0670F7DA25EE75CF004F1DF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0670F7D925EE75CF004F1DF0 /* Preview Assets.xcassets */; };
+		0670F7E425EE760A004F1DF0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7E325EE760A004F1DF0 /* MainView.swift */; };
+		0670F7E825EE769A004F1DF0 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7E725EE769A004F1DF0 /* MetalView.swift */; };
+		0670F7EC25EE7B7F004F1DF0 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */; };
+		0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */; };
+		06F8417925F26489003F58D6 /* TriangleShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 06F8417825F26489003F58D6 /* TriangleShader.metal */; };
+		06F8417D25F26B60003F58D6 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8417C25F26B60003F58D6 /* MathLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0605B34425FA4D3200BAAA9B /* EarthSurfaceNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarthSurfaceNode.swift; sourceTree = "<group>"; };
+		0605B34725FA596700BAAA9B /* EarthShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = EarthShader.metal; sourceTree = "<group>"; };
+		0605B34A25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLDeviceExtensions.swift; sourceTree = "<group>"; };
+		0605B34E25FA662600BAAA9B /* MapCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCamera.swift; sourceTree = "<group>"; };
+		0605B35125FB967800BAAA9B /* Bernburg GEWI.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Bernburg GEWI.gpx"; sourceTree = "<group>"; };
+		0605B35425FB97EA00BAAA9B /* MapPlusApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MapPlusApp.entitlements; sourceTree = "<group>"; };
+		0605B35625FB994B00BAAA9B /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
+		0605B35925FB9DE600BAAA9B /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		0605B35B25FB9E0700BAAA9B /* ExternalAccessory.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ExternalAccessory.framework; path = System/Library/Frameworks/ExternalAccessory.framework; sourceTree = SDKROOT; };
+		0605B36626009ED100BAAA9B /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		0605B3692600A7AA00BAAA9B /* SimdExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimdExtensions.swift; sourceTree = "<group>"; };
+		0605B36D26024CAA00BAAA9B /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
+		0605B37026024D4600BAAA9B /* MapPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlane.swift; sourceTree = "<group>"; };
+		0605B3732604DE4A00BAAA9B /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		0666950725F8B733000202F6 /* PlusMapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusMapService.swift; sourceTree = "<group>"; };
+		0666950A25F8B753000202F6 /* PlusMapServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusMapServiceView.swift; sourceTree = "<group>"; };
 		0670F7CF25EE75CE004F1DF0 /* MapPlusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapPlusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0670F7D225EE75CE004F1DF0 /* MapPlusAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlusAppApp.swift; sourceTree = "<group>"; };
-		0670F7D425EE75CE004F1DF0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0670F7D625EE75CF004F1DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0670F7D925EE75CF004F1DF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0670F7DB25EE75CF004F1DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0670F7E325EE760A004F1DF0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		0670F7E725EE769A004F1DF0 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
+		0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderNode.swift; sourceTree = "<group>"; };
+		06F8417825F26489003F58D6 /* TriangleShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TriangleShader.metal; sourceTree = "<group>"; };
+		06F8417C25F26B60003F58D6 /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,17 +71,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0666951525F8C160000202F6 /* MapTiles in Frameworks */,
+				0605B35C25FB9E0700BAAA9B /* ExternalAccessory.framework in Frameworks */,
+				0666951925F8C1A2000202F6 /* MapTiles in Frameworks */,
+				0605B35A25FB9DE600BAAA9B /* MapKit.framework in Frameworks */,
+				0666951D25F8C7D8000202F6 /* Gzip in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0666951325F8C160000202F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0605B35B25FB9E0700BAAA9B /* ExternalAccessory.framework */,
+				0605B35925FB9DE600BAAA9B /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0670F7C625EE75CE004F1DF0 = {
 			isa = PBXGroup;
 			children = (
 				0670F7D125EE75CE004F1DF0 /* MapPlusApp */,
 				0670F7D025EE75CE004F1DF0 /* Products */,
+				0666951325F8C160000202F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -52,11 +111,17 @@
 		0670F7D125EE75CE004F1DF0 /* MapPlusApp */ = {
 			isa = PBXGroup;
 			children = (
+				0605B35425FB97EA00BAAA9B /* MapPlusApp.entitlements */,
+				06F8417725F26451003F58D6 /* Shader */,
+				0670F7E625EE767D004F1DF0 /* MapRenderer */,
 				0670F7D225EE75CE004F1DF0 /* MapPlusAppApp.swift */,
-				0670F7D425EE75CE004F1DF0 /* ContentView.swift */,
 				0670F7D625EE75CF004F1DF0 /* Assets.xcassets */,
 				0670F7DB25EE75CF004F1DF0 /* Info.plist */,
+				0666950725F8B733000202F6 /* PlusMapService.swift */,
 				0670F7D825EE75CF004F1DF0 /* Preview Content */,
+				0670F7E325EE760A004F1DF0 /* MainView.swift */,
+				0605B35125FB967800BAAA9B /* Bernburg GEWI.gpx */,
+				0605B35625FB994B00BAAA9B /* UserLocationManager.swift */,
 			);
 			path = MapPlusApp;
 			sourceTree = "<group>";
@@ -64,9 +129,38 @@
 		0670F7D825EE75CF004F1DF0 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				0666950A25F8B753000202F6 /* PlusMapServiceView.swift */,
 				0670F7D925EE75CF004F1DF0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0670F7E625EE767D004F1DF0 /* MapRenderer */ = {
+			isa = PBXGroup;
+			children = (
+				06F8417C25F26B60003F58D6 /* MathLibrary.swift */,
+				0670F7E725EE769A004F1DF0 /* MetalView.swift */,
+				0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */,
+				0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */,
+				0605B36626009ED100BAAA9B /* Node.swift */,
+				0605B34425FA4D3200BAAA9B /* EarthSurfaceNode.swift */,
+				0605B34A25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift */,
+				0605B34E25FA662600BAAA9B /* MapCamera.swift */,
+				0605B3692600A7AA00BAAA9B /* SimdExtensions.swift */,
+				0605B36D26024CAA00BAAA9B /* Ray.swift */,
+				0605B37026024D4600BAAA9B /* MapPlane.swift */,
+				0605B3732604DE4A00BAAA9B /* Animatable.swift */,
+			);
+			path = MapRenderer;
+			sourceTree = "<group>";
+		};
+		06F8417725F26451003F58D6 /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				06F8417825F26489003F58D6 /* TriangleShader.metal */,
+				0605B34725FA596700BAAA9B /* EarthShader.metal */,
+			);
+			path = Shader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -85,6 +179,11 @@
 			dependencies = (
 			);
 			name = MapPlusApp;
+			packageProductDependencies = (
+				0666951425F8C160000202F6 /* MapTiles */,
+				0666951825F8C1A2000202F6 /* MapTiles */,
+				0666951C25F8C7D8000202F6 /* Gzip */,
+			);
 			productName = MapPlusApp;
 			productReference = 0670F7CF25EE75CE004F1DF0 /* MapPlusApp.app */;
 			productType = "com.apple.product-type.application";
@@ -112,6 +211,10 @@
 				Base,
 			);
 			mainGroup = 0670F7C625EE75CE004F1DF0;
+			packageReferences = (
+				0666951725F8C1A2000202F6 /* XCRemoteSwiftPackageReference "MapTiles" */,
+				0666951B25F8C7D8000202F6 /* XCRemoteSwiftPackageReference "GzipSwift" */,
+			);
 			productRefGroup = 0670F7D025EE75CE004F1DF0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -126,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0605B35225FB967800BAAA9B /* Bernburg GEWI.gpx in Resources */,
 				0670F7DA25EE75CF004F1DF0 /* Preview Assets.xcassets in Resources */,
 				0670F7D725EE75CF004F1DF0 /* Assets.xcassets in Resources */,
 			);
@@ -138,8 +242,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0670F7D525EE75CE004F1DF0 /* ContentView.swift in Sources */,
+				0670F7EC25EE7B7F004F1DF0 /* MetalRenderer.swift in Sources */,
+				0605B3742604DE4A00BAAA9B /* Animatable.swift in Sources */,
+				0670F7E825EE769A004F1DF0 /* MetalView.swift in Sources */,
+				0605B34525FA4D3200BAAA9B /* EarthSurfaceNode.swift in Sources */,
+				0666950825F8B733000202F6 /* PlusMapService.swift in Sources */,
 				0670F7D325EE75CE004F1DF0 /* MapPlusAppApp.swift in Sources */,
+				0605B35725FB994B00BAAA9B /* UserLocationManager.swift in Sources */,
+				06F8417D25F26B60003F58D6 /* MathLibrary.swift in Sources */,
+				0666950C25F8B753000202F6 /* PlusMapServiceView.swift in Sources */,
+				06F8417925F26489003F58D6 /* TriangleShader.metal in Sources */,
+				0605B34F25FA662600BAAA9B /* MapCamera.swift in Sources */,
+				0605B36726009ED100BAAA9B /* Node.swift in Sources */,
+				0605B34825FA596700BAAA9B /* EarthShader.metal in Sources */,
+				0605B36A2600A7AA00BAAA9B /* SimdExtensions.swift in Sources */,
+				0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */,
+				0670F7E425EE760A004F1DF0 /* MainView.swift in Sources */,
+				0605B37126024D4600BAAA9B /* MapPlane.swift in Sources */,
+				0605B36E26024CAA00BAAA9B /* Ray.swift in Sources */,
+				0605B34B25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +388,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MapPlusApp/MapPlusApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MapPlusApp/Preview Content\"";
 				DEVELOPMENT_TEAM = LSG8H5BU4X;
@@ -289,6 +411,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MapPlusApp/MapPlusApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"MapPlusApp/Preview Content\"";
 				DEVELOPMENT_TEAM = LSG8H5BU4X;
@@ -328,6 +451,42 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0666951725F8C1A2000202F6 /* XCRemoteSwiftPackageReference "MapTiles" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/daeho-kim-gewi/MapTiles.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		0666951B25F8C7D8000202F6 /* XCRemoteSwiftPackageReference "GzipSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/1024jp/GzipSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0666951425F8C160000202F6 /* MapTiles */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MapTiles;
+		};
+		0666951825F8C1A2000202F6 /* MapTiles */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0666951725F8C1A2000202F6 /* XCRemoteSwiftPackageReference "MapTiles" */;
+			productName = MapTiles;
+		};
+		0666951C25F8C7D8000202F6 /* Gzip */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0666951B25F8C7D8000202F6 /* XCRemoteSwiftPackageReference "GzipSwift" */;
+			productName = Gzip;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0670F7C725EE75CE004F1DF0 /* Project object */;
 }

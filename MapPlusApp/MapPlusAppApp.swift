@@ -11,7 +11,15 @@ import SwiftUI
 struct MapPlusAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
+                .onAppear {
+                    UserLocationManager.shared.start()
+                    
+                    if !UserLocationManager.shared.isAvailabe() {
+                        print("Location service is not available!")
+                    }
+                }
         }
+
     }
 }
