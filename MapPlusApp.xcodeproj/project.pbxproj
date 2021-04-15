@@ -20,8 +20,6 @@
 		0605B36E26024CAA00BAAA9B /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B36D26024CAA00BAAA9B /* Ray.swift */; };
 		0605B37126024D4600BAAA9B /* MapPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B37026024D4600BAAA9B /* MapPlane.swift */; };
 		0605B3742604DE4A00BAAA9B /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B3732604DE4A00BAAA9B /* Animatable.swift */; };
-		0666950825F8B733000202F6 /* PlusMapService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0666950725F8B733000202F6 /* PlusMapService.swift */; };
-		0666950C25F8B753000202F6 /* PlusMapServiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0666950A25F8B753000202F6 /* PlusMapServiceView.swift */; };
 		0666951525F8C160000202F6 /* MapTiles in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951425F8C160000202F6 /* MapTiles */; };
 		0666951925F8C1A2000202F6 /* MapTiles in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951825F8C1A2000202F6 /* MapTiles */; };
 		0666951D25F8C7D8000202F6 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951C25F8C7D8000202F6 /* Gzip */; };
@@ -32,6 +30,9 @@
 		0670F7E825EE769A004F1DF0 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7E725EE769A004F1DF0 /* MetalView.swift */; };
 		0670F7EC25EE7B7F004F1DF0 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */; };
 		0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */; };
+		06994D70260CC66C00D8FB6B /* AreaFillRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */; };
+		06994D742613189300D8FB6B /* AreaFillShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 06994D732613189300D8FB6B /* AreaFillShader.metal */; };
+		06CB10AF26246851007B2488 /* TestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB10AE26246851007B2488 /* TestNode.swift */; };
 		06F8417925F26489003F58D6 /* TriangleShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 06F8417825F26489003F58D6 /* TriangleShader.metal */; };
 		06F8417D25F26B60003F58D6 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8417C25F26B60003F58D6 /* MathLibrary.swift */; };
 /* End PBXBuildFile section */
@@ -51,8 +52,6 @@
 		0605B36D26024CAA00BAAA9B /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		0605B37026024D4600BAAA9B /* MapPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlane.swift; sourceTree = "<group>"; };
 		0605B3732604DE4A00BAAA9B /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
-		0666950725F8B733000202F6 /* PlusMapService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusMapService.swift; sourceTree = "<group>"; };
-		0666950A25F8B753000202F6 /* PlusMapServiceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusMapServiceView.swift; sourceTree = "<group>"; };
 		0670F7CF25EE75CE004F1DF0 /* MapPlusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapPlusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0670F7D225EE75CE004F1DF0 /* MapPlusAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlusAppApp.swift; sourceTree = "<group>"; };
 		0670F7D625EE75CF004F1DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +61,9 @@
 		0670F7E725EE769A004F1DF0 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
 		0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderNode.swift; sourceTree = "<group>"; };
+		06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaFillRenderNode.swift; sourceTree = "<group>"; };
+		06994D732613189300D8FB6B /* AreaFillShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AreaFillShader.metal; sourceTree = "<group>"; };
+		06CB10AE26246851007B2488 /* TestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNode.swift; sourceTree = "<group>"; };
 		06F8417825F26489003F58D6 /* TriangleShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TriangleShader.metal; sourceTree = "<group>"; };
 		06F8417C25F26B60003F58D6 /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,7 +119,6 @@
 				0670F7D225EE75CE004F1DF0 /* MapPlusAppApp.swift */,
 				0670F7D625EE75CF004F1DF0 /* Assets.xcassets */,
 				0670F7DB25EE75CF004F1DF0 /* Info.plist */,
-				0666950725F8B733000202F6 /* PlusMapService.swift */,
 				0670F7D825EE75CF004F1DF0 /* Preview Content */,
 				0670F7E325EE760A004F1DF0 /* MainView.swift */,
 				0605B35125FB967800BAAA9B /* Bernburg GEWI.gpx */,
@@ -129,7 +130,6 @@
 		0670F7D825EE75CF004F1DF0 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				0666950A25F8B753000202F6 /* PlusMapServiceView.swift */,
 				0670F7D925EE75CF004F1DF0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -138,6 +138,7 @@
 		0670F7E625EE767D004F1DF0 /* MapRenderer */ = {
 			isa = PBXGroup;
 			children = (
+				06994D6E260CC64700D8FB6B /* RenderNodes */,
 				06F8417C25F26B60003F58D6 /* MathLibrary.swift */,
 				0670F7E725EE769A004F1DF0 /* MetalView.swift */,
 				0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */,
@@ -145,8 +146,8 @@
 				0605B36626009ED100BAAA9B /* Node.swift */,
 				0605B34425FA4D3200BAAA9B /* EarthSurfaceNode.swift */,
 				0605B34A25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift */,
-				0605B34E25FA662600BAAA9B /* MapCamera.swift */,
 				0605B3692600A7AA00BAAA9B /* SimdExtensions.swift */,
+				0605B34E25FA662600BAAA9B /* MapCamera.swift */,
 				0605B36D26024CAA00BAAA9B /* Ray.swift */,
 				0605B37026024D4600BAAA9B /* MapPlane.swift */,
 				0605B3732604DE4A00BAAA9B /* Animatable.swift */,
@@ -154,11 +155,21 @@
 			path = MapRenderer;
 			sourceTree = "<group>";
 		};
+		06994D6E260CC64700D8FB6B /* RenderNodes */ = {
+			isa = PBXGroup;
+			children = (
+				06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */,
+				06CB10AE26246851007B2488 /* TestNode.swift */,
+			);
+			path = RenderNodes;
+			sourceTree = "<group>";
+		};
 		06F8417725F26451003F58D6 /* Shader */ = {
 			isa = PBXGroup;
 			children = (
 				06F8417825F26489003F58D6 /* TriangleShader.metal */,
 				0605B34725FA596700BAAA9B /* EarthShader.metal */,
+				06994D732613189300D8FB6B /* AreaFillShader.metal */,
 			);
 			path = Shader;
 			sourceTree = "<group>";
@@ -246,17 +257,18 @@
 				0605B3742604DE4A00BAAA9B /* Animatable.swift in Sources */,
 				0670F7E825EE769A004F1DF0 /* MetalView.swift in Sources */,
 				0605B34525FA4D3200BAAA9B /* EarthSurfaceNode.swift in Sources */,
-				0666950825F8B733000202F6 /* PlusMapService.swift in Sources */,
 				0670F7D325EE75CE004F1DF0 /* MapPlusAppApp.swift in Sources */,
 				0605B35725FB994B00BAAA9B /* UserLocationManager.swift in Sources */,
 				06F8417D25F26B60003F58D6 /* MathLibrary.swift in Sources */,
-				0666950C25F8B753000202F6 /* PlusMapServiceView.swift in Sources */,
+				06994D70260CC66C00D8FB6B /* AreaFillRenderNode.swift in Sources */,
 				06F8417925F26489003F58D6 /* TriangleShader.metal in Sources */,
 				0605B34F25FA662600BAAA9B /* MapCamera.swift in Sources */,
 				0605B36726009ED100BAAA9B /* Node.swift in Sources */,
+				06994D742613189300D8FB6B /* AreaFillShader.metal in Sources */,
 				0605B34825FA596700BAAA9B /* EarthShader.metal in Sources */,
 				0605B36A2600A7AA00BAAA9B /* SimdExtensions.swift in Sources */,
 				0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */,
+				06CB10AF26246851007B2488 /* TestNode.swift in Sources */,
 				0670F7E425EE760A004F1DF0 /* MainView.swift in Sources */,
 				0605B37126024D4600BAAA9B /* MapPlane.swift in Sources */,
 				0605B36E26024CAA00BAAA9B /* Ray.swift in Sources */,

@@ -30,6 +30,32 @@ public extension float3 {
     static let zero = float3(0, 0, 0)
 }
 
+public extension float4 {
+    static func getColor(hex: String) -> float4? {
+        let r, g, b, a: Float
+
+        let start = hex.index(hex.startIndex, offsetBy: 0)
+        let hexColor = String(hex[start...])
+        
+        if hexColor.count == 8 {
+            let scanner = Scanner(string: hexColor)
+            var hexNumber: UInt64 = 0
+            
+            if scanner.scanHexInt64(&hexNumber) {
+                r = Float((hexNumber & 0xff000000) >> 24) / 255
+                g = Float((hexNumber & 0x00ff0000) >> 16) / 255
+                b = Float((hexNumber & 0x0000ff00) >> 8) / 255
+                a = Float(hexNumber & 0x000000ff) / 255
+                
+                return float4(r, g, b, a)
+            }
+        }
+        
+        return nil
+    }
+}
+
+
 public extension float2 {
     static func * (_ f2: float2, _ scalar: Float) -> float2 {
         return float2(f2.x * scalar, f2.y * scalar)

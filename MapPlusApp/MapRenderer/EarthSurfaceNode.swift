@@ -8,7 +8,9 @@
 import Foundation
 import Metal
 import simd
+import MapTiles
 import UIKit
+
 
 
 fileprivate struct Vertex  {
@@ -34,7 +36,7 @@ public class EarthSurfaceNode: MetalRenderNode  {
     private var depthStencilState: MTLDepthStencilState?
     
     func setup(device: MTLDevice) {
-        let FAC: Float = 1.0
+        let FAC: Float = Float(MapTileConstants.FACTOR)
         var vertices: [Vertex] = [
             Vertex(position: float2(-180.0, 90.0) * FAC, tex: float2(0, 1)), // 0
             Vertex(position: float2(-180.0, -90.0) * FAC, tex: float2(0, 0)),// 1
@@ -83,7 +85,8 @@ public class EarthSurfaceNode: MetalRenderNode  {
     }
     
     
-    func render(for commandEncoder: MTLRenderCommandEncoder, device: MTLDevice, camera: MapCamera) {
+    func render(for commandEncoder: MTLRenderCommandEncoder, device: MTLDevice, camera: MapCamera,
+                tiles: [VMapTile], appearance: MapNetworkAppearance) {
         if let rps = self.renderPipelineState, let dss = self.depthStencilState,
            let vb = self.vertexBuffer, let ib = self.indicesBuffer,
            let tex = self.texture {

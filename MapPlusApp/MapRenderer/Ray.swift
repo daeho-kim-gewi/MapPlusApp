@@ -11,7 +11,4 @@ import simd
 public struct Ray {
     var origin: float3
     var direction: float3
-    
-    
-    
 }

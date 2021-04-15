@@ -48,8 +48,8 @@ public class MapCamera {
         if let mp1 = self.unproject(point: p1),
            let mp2 = self.unproject(point: p2) {
             
-            let dx = Double(mp1.x - mp2.x)
-            let dy = Double(mp1.y - mp2.y)
+            let dx = Double(mp1.x - mp2.x) / 10000.0
+            let dy = Double(mp1.y - mp2.y) / 10000.0
             
             self.cameraState.position = GeoPosition(x: self.cameraState.position.X - dx,
                                                     y: self.cameraState.position.Y - dy)
@@ -98,17 +98,12 @@ public class MapCamera {
         
     }
     
-    public func pinchScaleBigger() {
-        if self.cameraState.cameraDistance > 21 {
-            self.cameraState.cameraDistance -= 1
-        }
+    public func getMapTiles(tileManager: MapTileManager) -> [VMapTile] {
+        
+        let rect = VMapTileRect(north: 90.0, west: -180.0, south: -90.0, east: 180.0)
+        return tileManager.getMapTiles(for: rect)
     }
     
-    public func pinchScaleSmaller() {
-        if self.cameraState.cameraDistance < 120 {
-            self.cameraState.cameraDistance += 1
-        }
-    }
     
     var aspect: Float {
         Float(viewportSize.width/viewportSize.height)
@@ -127,11 +122,14 @@ public class MapCamera {
     }
     
     var worldMatrix: float4x4 {
+        let FAC: Float = Float(1.0/MapTileConstants.FACTOR)
+        let scale = float4x4(scaling: float3(FAC, FAC, 1.0))
+        
         let translate = float4x4(translation: float3(-Float(self.cameraState.position.X),
                                                      -Float(self.cameraState.position.Y), 0.0))
         let rotation = float4x4(self.cameraState.rotation)
         
-        return translate * rotation
+        return translate * scale * rotation
     }
 }
 

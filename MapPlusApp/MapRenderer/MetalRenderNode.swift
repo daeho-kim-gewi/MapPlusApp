@@ -7,11 +7,12 @@
 
 import Foundation
 import Metal
+import MapTiles
 
 protocol MetalRenderNode {
     
     func setup(device: MTLDevice)
     
     func render(for commandEncoder: MTLRenderCommandEncoder, device: MTLDevice,
-                camera: MapCamera)
+                camera: MapCamera, tiles: [VMapTile], appearance: MapNetworkAppearance)
 }

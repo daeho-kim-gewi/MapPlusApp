@@ -34,6 +34,9 @@ public class PlusMapService: ObservableObject {
     @Published var availableMap: [AvailableMap] = []
     var canceleable: AnyCancellable?
     
+    let tileConverter: MapTileConverter = MapTileConversion()
+    
+    
     let urlPlusMap: String = "https://plusmapservice.gewi.com/tic3plusmapserviceapp/"
     
     public init() {
@@ -49,6 +52,7 @@ public class PlusMapService: ObservableObject {
             .map { $0.data }
             .decode(type: [String].self, decoder: JSONDecoder())
             .map { $0.compactMap({ t in self.convert(tileData: t) } ) }
+            .map { self.transform(tiles: $0) }
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
@@ -71,6 +75,10 @@ public class PlusMapService: ObservableObject {
             }
         }
         return nil
+    }
+    
+    private func transform(tiles: [VMapTile]) -> [VMapTile] {
+        return tiles.map { tileConverter.convert(tile: $0) }
     }
     
     public func updateAvailableMap(textInput: String) {

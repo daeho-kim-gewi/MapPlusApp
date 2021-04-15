@@ -36,22 +36,22 @@ import simd
 let π = Float.pi
 
 extension Float {
-  var radiansToDegrees: Float {
-    (self / π) * 180
-  }
-  var degreesToRadians: Float {
-    (self / 180) * π
-  }
+    var radiansToDegrees: Float {
+        (self / π) * 180
+    }
+    var degreesToRadians: Float {
+        (self / 180) * π
+    }
 }
 
 extension double3x3 {
     init(scaling: double2) {
-      let matrix = double3x3(
-        [scaling.x,         0,         0],
-        [        0, scaling.y,         0],
-        [        0,         0,         1]
-      )
-      self = matrix
+        let matrix = double3x3(
+            [scaling.x,         0,         0],
+            [        0, scaling.y,         0],
+            [        0,         0,         1]
+        )
+        self = matrix
     }
     
 }
@@ -61,29 +61,29 @@ extension double3x3 {
 
 // MARK:- float3x3
 extension float3x3 {
-  init(normalFrom4x4 matrix: float4x4) {
-    self.init()
-    columns = matrix.upperLeft.inverse.transpose.columns
-  }
+    init(normalFrom4x4 matrix: float4x4) {
+        self.init()
+        columns = matrix.upperLeft.inverse.transpose.columns
+    }
 }
 
 // MARK:- float4
 extension float4 {
-  var xyz: float3 {
-    get {
-      float3(x, y, z)
+    var xyz: float3 {
+        get {
+            float3(x, y, z)
+        }
+        set {
+            x = newValue.x
+            y = newValue.y
+            z = newValue.z
+        }
     }
-    set {
-      x = newValue.x
-      y = newValue.y
-      z = newValue.z
+    
+    // convert from double4
+    init(_ d: SIMD4<Double>) {
+        self.init()
+        self = [Float(d.x), Float(d.y), Float(d.z), Float(d.w)]
     }
-  }
-  
-  // convert from double4
-  init(_ d: SIMD4<Double>) {
-    self.init()
-    self = [Float(d.x), Float(d.y), Float(d.z), Float(d.w)]
-  }
 }
 

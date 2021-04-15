@@ -16,21 +16,34 @@ class MetalRenderer: NSObject, MTKViewDelegate {
     var commandQueue: MTLCommandQueue!
     var renderNodes: [MetalRenderNode]
     var mapCamera: MapCamera = MapCamera()
-    
+    var mapTileManager: MapTileManager
+    var appearanceMapTileManager: Appearance = Appearance.light
     
     init(device: MTLDevice) {
         self.device = device
         self.renderNodes = []
+        self.mapTileManager = MapTileManager(device: device)
         
         super.init()
         self.commandQueue = device.makeCommandQueue()
+    
+//        register(node: TestRenderNode())
+        register(node: AreaFillRenderNode())
+//        register(node: EarthSurfaceNode())
         
-        register(node: EarthSurfaceNode())
+        self.mapTileManager.setup()
+        
+        
     }
     
     func register(node: MetalRenderNode) {
         node.setup(device: self.device)
         self.renderNodes.append(node)
+    }
+    
+    // TODO: Daeho
+    private func getAppearance() -> MapNetworkAppearance? {
+        return mapTileManager.get(appearance: self.appearanceMapTileManager)
     }
     
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
@@ -43,23 +56,33 @@ class MetalRenderer: NSObject, MTKViewDelegate {
             return
         }
         
+        guard let mapNetworkAppearance = getAppearance() else {
+            return
+        }
+                
         self.mapCamera.update()
-        
-        if let commandBuffer = commandQueue.makeCommandBuffer(),
-           let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) {
+        let mapTiles = self.mapCamera.getMapTiles(tileManager: self.mapTileManager)
+        if (mapTiles.count > 0) {
             
-            for node in self.renderNodes {
-                node.render(for: commandEncoder, device: self.device, camera: self.mapCamera)
+            if let commandBuffer = commandQueue.makeCommandBuffer(),
+               let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) {
+                
+                
+                for node in self.renderNodes {
+                    node.render(for: commandEncoder, device: self.device, camera: self.mapCamera,
+                                tiles: mapTiles,
+                                appearance: mapNetworkAppearance)
+                
+                }
+                
+                commandEncoder.endEncoding()
+                commandBuffer.present(drawable)
+                
+                commandBuffer.commit()
             }
-            
-            commandEncoder.endEncoding()
-            commandBuffer.present(drawable)
-            
-            commandBuffer.commit()
         }
     }
     
-    // zoom move etc... methods
     func zoomIn(_ location: CGPoint) {
         self.mapCamera.zoomIn(location)
     }
@@ -76,12 +99,5 @@ class MetalRenderer: NSObject, MTKViewDelegate {
         self.mapCamera.pinchLocation(location)
     }
     
-    func pinchScaleBigger() {
-        self.mapCamera.pinchScaleBigger()
-    }
-    
-    func pinchScaleSmaller() {
-        self.mapCamera.pinchScaleSmaller()
-    }
-    
+   
 }

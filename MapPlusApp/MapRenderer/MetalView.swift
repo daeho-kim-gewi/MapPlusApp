@@ -8,6 +8,7 @@
 import SwiftUI
 import Metal
 import MetalKit
+import MapTiles
 
 struct MetalKitView: UIViewRepresentable {
     typealias UIViewType = UIView
@@ -48,11 +49,22 @@ class MetalUIKitView : MTKView {
         
         self.renderer = MetalRenderer(device: defaultDevice)
         self.delegate = self.renderer
+        
+        set(scheme: .light)
     }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func set(scheme: Appearance) {
+        if scheme == .light {
+            clearColor = MTLClearColor(red: 0xEB/255.0, green: 0xE9/255.0, blue: 0xE6/255.0, alpha: 1.0)
+        } else {
+            clearColor = MTLClearColor(red: 0x1E/255.0, green: 0x1E/255.0, blue: 0x1E/255.0, alpha: 1.0)
+        }
+    }
+    
     
     func setupGestures() {
         // setup gestures
@@ -86,8 +98,8 @@ class MetalUIKitView : MTKView {
     
     @objc private func onSingleTap(gesture: UITapGestureRecognizer) {
         // single click... ???
-         let fingerPosition = gesture.location(in: self)
-        print(fingerPosition)
+//         let fingerPosition = gesture.location(in: self)
+//        print(fingerPosition)
     }
     
     @objc private func onDoubleTap(gesture: UITapGestureRecognizer) {
@@ -107,22 +119,15 @@ class MetalUIKitView : MTKView {
         let scale = gesture.scale
         
         if gesture.state == .began {
-            print("pinch start")
             self.lastLocation = gesture.location(in: self)
             self.transform.scaledBy(x: scale, y: scale)
         } else if gesture.state == .changed {
             // var scale = gesture.scale
             // process this scale, zoom the map....
-            print("pinch change")
+   
             // zoom for position "pinchLocation"
             renderer.pinchLocation(lastLocation!)
-            
-//            if scale < 1 {
-//                renderer.pinchScaleSmaller()
-//            } else if scale > 1 {
-//                renderer.pinchScaleBigger()
-//            }
-
+    
             
         } else if gesture.state == .ended {
             // no more changes

@@ -124,7 +124,7 @@ public class DoubleValueAnimation: Animation, Animatable {
 
 public class CameraDistanceValueAnimation: Animation, Animatable {
     public typealias T = Float
-   
+    
     public init(from: Float, to: Float, duration: Double = 0.5, start: Date = Date()) {
         self.start = start
         self.fromValue = from
