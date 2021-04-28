@@ -10,38 +10,38 @@ import Metal
 import MetalKit
 import simd
 import MapTiles
+import SwiftUI
 
 class MetalRenderer: NSObject, MTKViewDelegate {
     var device: MTLDevice
     var commandQueue: MTLCommandQueue!
     var renderNodes: [MetalRenderNode]
-    var mapCamera: MapCamera = MapCamera()
+    var mapCamera: MapCamera
     var mapTileManager: MapTileManager
     var appearanceMapTileManager: Appearance = Appearance.light
     
-    init(device: MTLDevice) {
+    init(device: MTLDevice, mapCamera: MapCamera) {
         self.device = device
         self.renderNodes = []
         self.mapTileManager = MapTileManager(device: device)
+        self.mapCamera = mapCamera
         
         super.init()
         self.commandQueue = device.makeCommandQueue()
     
 //        register(node: TestRenderNode())
         register(node: AreaFillRenderNode())
+        
 //        register(node: EarthSurfaceNode())
         
         self.mapTileManager.setup()
-        
-        
     }
     
     func register(node: MetalRenderNode) {
         node.setup(device: self.device)
         self.renderNodes.append(node)
     }
-    
-    // TODO: Daeho
+        
     private func getAppearance() -> MapNetworkAppearance? {
         return mapTileManager.get(appearance: self.appearanceMapTileManager)
     }
@@ -67,13 +67,13 @@ class MetalRenderer: NSObject, MTKViewDelegate {
             if let commandBuffer = commandQueue.makeCommandBuffer(),
                let commandEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) {
                 
-                
                 for node in self.renderNodes {
                     node.render(for: commandEncoder, device: self.device, camera: self.mapCamera,
                                 tiles: mapTiles,
                                 appearance: mapNetworkAppearance)
                 
                 }
+                
                 
                 commandEncoder.endEncoding()
                 commandBuffer.present(drawable)
@@ -98,6 +98,4 @@ class MetalRenderer: NSObject, MTKViewDelegate {
     func pinchLocation(_ location: CGPoint) {
         self.mapCamera.pinchLocation(location)
     }
-    
-   
 }

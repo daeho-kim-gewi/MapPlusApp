@@ -16,8 +16,12 @@ public struct MapPlane {
     public func intersect(ray: Ray) -> float3? {
         let u = simd_dot(self.normal, ray.direction)
         if u != 0.0 {
-            let t = (simd_dot(self.normal, self.origin) - simd_dot(self.normal, ray.origin)) / u
-            return ray.origin + ray.direction * t
+			let p = self.origin - ray.origin
+			let t = simd_dot(p, self.normal) / u
+			return ray.origin + ray.direction * t
+			
+//            let t = (simd_dot(self.normal, self.origin) - simd_dot(self.normal, ray.origin)) / u
+//            return ray.origin + ray.direction * t
         }
        
         return nil

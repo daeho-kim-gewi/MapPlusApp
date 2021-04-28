@@ -17,7 +17,7 @@ fileprivate struct Uniform {
 
 
 public class AreaFillRenderNode: MetalRenderNode  {
-    private var uniform: Uniform = Uniform(mvp: float4x4(scaling: float3(1.0/180.0 * 3.0, 1.0/180.0, 1.0)),
+	private var uniform: Uniform = Uniform(mvp: float4x4.identity(),
                                            color: float4(0, 0, 1.0, 1.0))
     
     private var renderPipelineState: MTLRenderPipelineState?
@@ -68,7 +68,7 @@ public class AreaFillRenderNode: MetalRenderNode  {
                 if let drawing = tile.DrawingData {        
                     let areaData = drawing.areaData
                     for areaSubType in areaData.getKeys() {
-                        
+
                         let zoomLevel = Int(VMapTileId.getMapTileSize(tileId: tile.TileId).rawValue)
                         
                         if let areaAppearance = appearance.getAppearance(area: areaSubType),

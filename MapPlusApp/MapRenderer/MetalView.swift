@@ -31,13 +31,13 @@ struct MetalKitView: UIViewRepresentable {
     }
 }
 
-class MetalUIKitView : MTKView {
+class MetalUIKitView : MTKView, ObservableObject {
     private var renderer: MetalRenderer!
     private var lastLocation: CGPoint? = nil
-    private var mapCamera: MapCamera = MapCamera()
-    private var mapCameraState: MapCameraState = MapCameraState()
+    private var mapCamera: MapCamera
     
-    init() {
+    init(mapCamera: MapCamera) {
+        self.mapCamera = mapCamera
         super.init(frame: .zero, device: MTLCreateSystemDefaultDevice())
         
         guard let defaultDevice = device else {
@@ -47,8 +47,9 @@ class MetalUIKitView : MTKView {
         colorPixelFormat = .bgra8Unorm
         clearColor = MTLClearColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1.0)
         
-        self.renderer = MetalRenderer(device: defaultDevice)
+        self.renderer = MetalRenderer(device: defaultDevice, mapCamera: mapCamera)
         self.delegate = self.renderer
+        
         
         set(scheme: .light)
     }
@@ -64,7 +65,6 @@ class MetalUIKitView : MTKView {
             clearColor = MTLClearColor(red: 0x1E/255.0, green: 0x1E/255.0, blue: 0x1E/255.0, alpha: 1.0)
         }
     }
-    
     
     func setupGestures() {
         // setup gestures
@@ -98,8 +98,8 @@ class MetalUIKitView : MTKView {
     
     @objc private func onSingleTap(gesture: UITapGestureRecognizer) {
         // single click... ???
-//         let fingerPosition = gesture.location(in: self)
-//        print(fingerPosition)
+        //         let fingerPosition = gesture.location(in: self)
+        //        print(fingerPosition)
     }
     
     @objc private func onDoubleTap(gesture: UITapGestureRecognizer) {
@@ -124,10 +124,10 @@ class MetalUIKitView : MTKView {
         } else if gesture.state == .changed {
             // var scale = gesture.scale
             // process this scale, zoom the map....
-   
+            
             // zoom for position "pinchLocation"
             renderer.pinchLocation(lastLocation!)
-    
+            
             
         } else if gesture.state == .ended {
             // no more changes
@@ -155,9 +155,11 @@ class MetalUIKitView : MTKView {
 }
 
 struct MetalView: View {
+    var mapCamera: MapCamera
+    
     var body: some View {
         MetalKitView {
-            MetalUIKitView()
+            MetalUIKitView(mapCamera: mapCamera)
         } update: { (view, context) in
             if let mtkView = view as? MetalUIKitView  {
                 mtkView.setupGestures()
@@ -166,8 +168,3 @@ struct MetalView: View {
     }
 }
 
-struct MetalView_Previews: PreviewProvider {
-    static var previews: some View {
-        MetalView()
-    }
-}

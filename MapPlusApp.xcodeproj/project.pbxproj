@@ -32,7 +32,9 @@
 		0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */; };
 		06994D70260CC66C00D8FB6B /* AreaFillRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */; };
 		06994D742613189300D8FB6B /* AreaFillShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 06994D732613189300D8FB6B /* AreaFillShader.metal */; };
+		06BC1684262EBC5500A30618 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC1683262EBC5500A30618 /* VisualEffectView.swift */; };
 		06CB10AF26246851007B2488 /* TestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB10AE26246851007B2488 /* TestNode.swift */; };
+		06F4B928263933F700AD8C0A /* ViewRectangleRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F4B927263933F700AD8C0A /* ViewRectangleRenderNode.swift */; };
 		06F8417925F26489003F58D6 /* TriangleShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 06F8417825F26489003F58D6 /* TriangleShader.metal */; };
 		06F8417D25F26B60003F58D6 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F8417C25F26B60003F58D6 /* MathLibrary.swift */; };
 /* End PBXBuildFile section */
@@ -63,7 +65,9 @@
 		0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderNode.swift; sourceTree = "<group>"; };
 		06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaFillRenderNode.swift; sourceTree = "<group>"; };
 		06994D732613189300D8FB6B /* AreaFillShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AreaFillShader.metal; sourceTree = "<group>"; };
+		06BC1683262EBC5500A30618 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		06CB10AE26246851007B2488 /* TestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNode.swift; sourceTree = "<group>"; };
+		06F4B927263933F700AD8C0A /* ViewRectangleRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRectangleRenderNode.swift; sourceTree = "<group>"; };
 		06F8417825F26489003F58D6 /* TriangleShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = TriangleShader.metal; sourceTree = "<group>"; };
 		06F8417C25F26B60003F58D6 /* MathLibrary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +127,7 @@
 				0670F7E325EE760A004F1DF0 /* MainView.swift */,
 				0605B35125FB967800BAAA9B /* Bernburg GEWI.gpx */,
 				0605B35625FB994B00BAAA9B /* UserLocationManager.swift */,
+				06BC1683262EBC5500A30618 /* VisualEffectView.swift */,
 			);
 			path = MapPlusApp;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			children = (
 				06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */,
 				06CB10AE26246851007B2488 /* TestNode.swift */,
+				06F4B927263933F700AD8C0A /* ViewRectangleRenderNode.swift */,
 			);
 			path = RenderNodes;
 			sourceTree = "<group>";
@@ -255,6 +261,7 @@
 			files = (
 				0670F7EC25EE7B7F004F1DF0 /* MetalRenderer.swift in Sources */,
 				0605B3742604DE4A00BAAA9B /* Animatable.swift in Sources */,
+				06BC1684262EBC5500A30618 /* VisualEffectView.swift in Sources */,
 				0670F7E825EE769A004F1DF0 /* MetalView.swift in Sources */,
 				0605B34525FA4D3200BAAA9B /* EarthSurfaceNode.swift in Sources */,
 				0670F7D325EE75CE004F1DF0 /* MapPlusAppApp.swift in Sources */,
@@ -270,6 +277,7 @@
 				0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */,
 				06CB10AF26246851007B2488 /* TestNode.swift in Sources */,
 				0670F7E425EE760A004F1DF0 /* MainView.swift in Sources */,
+				06F4B928263933F700AD8C0A /* ViewRectangleRenderNode.swift in Sources */,
 				0605B37126024D4600BAAA9B /* MapPlane.swift in Sources */,
 				0605B36E26024CAA00BAAA9B /* Ray.swift in Sources */,
 				0605B34B25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift in Sources */,

@@ -9,28 +9,26 @@ import Foundation
 import simd
 import MetalKit
 import MapTiles
+import SwiftUI
 
 public class MapCameraState {
     public var cameraDistance: Float = 100.0
-    public var position: GeoPosition = GeoPosition(x: 12.1, y: 52.0)
+    public var position: GeoPosition = GeoPosition(x: 12.1, y: 52.0).toMercator()
     public var rotation: simd_quatf = simd_quatf(angle: 0.0, axis: float3.zAxis)
 }
 
 
-public class MapCamera {
-    
-    private var cameraState: MapCameraState = MapCameraState()
-    
+public class MapCamera: ObservableObject {
+    @Published public var cameraState: MapCameraState = MapCameraState()
     private let fovDegrees: Double = 70
+    // viewport size as native resolution in physical pixels!!
     private var viewportSize: CGSize = CGSize(width: 2.0, height: 1.0)
     private let near: Float = 0.01
-    
     private let cameraDistanceRange = 0.00001...200.0
     
     private var animations = [Animation]()
     
-    public init() {
-    }
+    public init() {    }
     
     public func set(viewport: CGSize) {
         self.viewportSize = viewport
@@ -47,60 +45,128 @@ public class MapCamera {
     public func move(from p1: CGPoint, to p2: CGPoint) {
         if let mp1 = self.unproject(point: p1),
            let mp2 = self.unproject(point: p2) {
-            
-            let dx = Double(mp1.x - mp2.x) / 10000.0
-            let dy = Double(mp1.y - mp2.y) / 10000.0
+         
+            let scale = Double(UIScreen.main.nativeScale)
+            let dx = Double(mp1.x - mp2.x) / MapTileConstants.FACTOR * scale
+            let dy = Double(mp1.y - mp2.y) / MapTileConstants.FACTOR * scale
             
             self.cameraState.position = GeoPosition(x: self.cameraState.position.X - dx,
                                                     y: self.cameraState.position.Y - dy)
         }
     }
     
+
+    @discardableResult
     private func scaleDistance(_ fac: Float) -> Bool {
-        let dist = self.cameraState.cameraDistance * fac
+        let dist = cameraState.cameraDistance * fac
         if cameraDistanceRange.contains(Double(dist)) {
-            animations.append(CameraDistanceValueAnimation(from: self.cameraState.cameraDistance,
-                                                  to: dist,
-                                                  duration: 0.5, start: Date()))
-            
+            animations.append(CameraDistanceValueAnimation(from: cameraState.cameraDistance,
+                                                  to: dist, duration: 0.5, start: Date()))
             return true
         }
         return false
     }
     
     public func zoomIn(_ location: CGPoint) {
-        if let center = self.unproject(point: location) {
-            if scaleDistance(0.5) {
-//                let centerPosition = GeoPosition(x: Double(center.x), y: Double(center.y))
-//
-//                animations.append(GeoPositionAnimation(from: self.cameraState.position,
-//                                                      to: centerPosition,
-//                                                      duration: 0.5, start: Date()))
-            }
+        if let _ = self.unproject(point: location) {
             
+            if scaleDistance(0.5) {
+
+            }
+//            scaleZoom(0.5, center: center)
         }
     }
     
     public func zoomOut(_ location: CGPoint) {
-        // location = center
-        if let center = self.unproject(point: location) {
+        if let _ = self.unproject(point: location) {
+
             if scaleDistance(2.0) {
-//                let centerPosition = GeoPosition(x: Double(center.x), y: Double(center.y))
-//
-//                animations.append(GeoPositionAnimation(from: self.cameraState.position,
-//                                                       to: centerPosition,
-//                                                       duration: 0.5, start: Date()))
+
             }
         }
     }
     
+    public func zoomIn() {
+        scaleDistance(0.5)
+    }
+    
+    public func zoomOut() {
+        scaleDistance(2.0)
+    }
+        
     public func pinchLocation(_ location: CGPoint) {
         
     }
     
-    public func getMapTiles(tileManager: MapTileManager) -> [VMapTile] {
+    private func clamp(_ p: GeoPosition) -> GeoPosition {
+        let x = max(min(p.X, 180.0), -180.0)
+        let y = max(min(p.Y, 90.0), -90.0)
         
-        let rect = VMapTileRect(north: 90.0, west: -180.0, south: -90.0, east: 180.0)
+        return GeoPosition(x: x, y: y)
+    }
+    
+    private func toWGS84Position(_ p: float3?) -> GeoPosition {
+        var x: Double = 0.0
+        var y: Double = 0.0
+        
+        if p != nil {
+            x = Double(p!.x) / MapTileConstants.FACTOR
+            y = Double(p!.y) / MapTileConstants.FACTOR
+        }
+
+        return clamp(GeoPosition(x: x, y: y).toWGS84())
+    }
+    
+    private func getViewCorners() -> [GeoPosition] {
+      //  print(self.viewportSize)
+        
+        let p1 = toWGS84Position(self.unproject(point: CGPoint(x: 0.0,
+                                                               y: 0.0)))
+        let p2 = toWGS84Position(self.unproject(point: CGPoint(x: Double(self.viewportSize.width),
+                                                               y: 0.0)))
+        let p3 = toWGS84Position(self.unproject(point: CGPoint(x: 0.0,
+                                                               y: Double(self.viewportSize.height))))
+        let p4 = toWGS84Position(self.unproject(point: CGPoint(x: Double(self.viewportSize.width),
+                                                               y: Double(self.viewportSize.height))))
+        
+        return [p3, p4, p2, p1]
+    }
+    
+    public func getVisibleRectangle() -> VMapTileRect {
+        let corners = getViewCorners()
+        let minX = corners.min{ $0.X < $1.X }!
+        let maxX = corners.max{ $0.X < $1.X }!
+        let minY = corners.min{ $0.Y < $1.Y }!
+        let maxY = corners.max{ $0.Y < $1.Y }!
+        
+        return VMapTileRect(north: min(90.0, maxY.Y),
+                            west: max(-180.0, minX.X),
+                            south: max(-90.0, minY.Y),
+                            east: min(180.0, maxX.X))
+        
+        
+//        // get the currently visible rectangle of the map
+//        let center = self.cameraState.position.toWGS84()
+//        let fov = 0.5 * fovDegrees * Double.pi/180.0
+//        let radius = Double(cameraState.cameraDistance) * tan(fov)
+//
+//        let north = min(center.Y + radius, 90.0)
+//        let south = max(center.Y - radius, -90.0)
+//        let east = min(center.X + radius, 180.0)
+//        let west = max(center.X - radius, -180.0)
+//
+//   //     print("\(center.X) \(center.Y)")
+//
+////        print("\(east), \(west), \(south), \(north)")
+//
+//        return VMapTileRect(north: north, west: west, south: south, east: east)
+    }
+    
+    
+    public func getMapTiles(tileManager: MapTileManager) -> [VMapTile] {
+        let rect: VMapTileRect = getVisibleRectangle()
+		//print("visible map rectangle: \(rect.topLeft.X) \(rect.topLeft.Y) - \(rect.bottomRight.X) \(rect.bottomRight.Y)")
+        
         return tileManager.getMapTiles(for: rect)
     }
     
@@ -116,7 +182,7 @@ public class MapCamera {
     }
     
     var viewMatrix: float4x4 {
-        return float4x4(eye: float3(0, 0, -Float(self.cameraState.cameraDistance)),
+        return float4x4(eye: float3(0, 0, -Float(cameraState.cameraDistance)),
                         center: float3.zero, up: float3.yAxis)
         
     }
@@ -154,8 +220,9 @@ public extension MapCamera {
         let clipCoords = float4(clipX, clipY, 0, 1)
         
         let inverseProjectionMatrix = self.projectionMatrix.inverse
-        let inverseViewMatrix = self.modelView.inverse
-        
+        let inverseViewMatrix = self.viewMatrix.inverse
+		let inverseWorldMatrix = self.worldMatrix.inverse
+		
         var eyeRayDir = inverseProjectionMatrix * clipCoords
         eyeRayDir.z = -1
         eyeRayDir.w = 0
@@ -166,10 +233,10 @@ public extension MapCamera {
         let eyeRayOrigin = float4(x: 0, y: 0, z: 0, w: 1)
         let worldRayOrigin = (inverseViewMatrix * eyeRayOrigin).xyz
         
-        let ray = Ray(origin: worldRayOrigin, direction: worldRayDir)
+		let ray = inverseWorldMatrix * Ray(origin: worldRayOrigin, direction: worldRayDir)
         
         if let p = MapPlane().intersect(ray: ray) {
-            return float3(p.x, p.y, p.z)
+			return p
         }
         
         return nil
