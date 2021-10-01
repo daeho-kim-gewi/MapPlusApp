@@ -20,18 +20,22 @@
 		0605B36E26024CAA00BAAA9B /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B36D26024CAA00BAAA9B /* Ray.swift */; };
 		0605B37126024D4600BAAA9B /* MapPlane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B37026024D4600BAAA9B /* MapPlane.swift */; };
 		0605B3742604DE4A00BAAA9B /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0605B3732604DE4A00BAAA9B /* Animatable.swift */; };
+		0647EFBD26428E14004BEB23 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0647EFBC26428E14004BEB23 /* MainView.swift */; };
 		0666951525F8C160000202F6 /* MapTiles in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951425F8C160000202F6 /* MapTiles */; };
 		0666951925F8C1A2000202F6 /* MapTiles in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951825F8C1A2000202F6 /* MapTiles */; };
 		0666951D25F8C7D8000202F6 /* Gzip in Frameworks */ = {isa = PBXBuildFile; productRef = 0666951C25F8C7D8000202F6 /* Gzip */; };
 		0670F7D325EE75CE004F1DF0 /* MapPlusAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7D225EE75CE004F1DF0 /* MapPlusAppApp.swift */; };
 		0670F7D725EE75CF004F1DF0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0670F7D625EE75CF004F1DF0 /* Assets.xcassets */; };
 		0670F7DA25EE75CF004F1DF0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0670F7D925EE75CF004F1DF0 /* Preview Assets.xcassets */; };
-		0670F7E425EE760A004F1DF0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7E325EE760A004F1DF0 /* MainView.swift */; };
 		0670F7E825EE769A004F1DF0 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7E725EE769A004F1DF0 /* MetalView.swift */; };
 		0670F7EC25EE7B7F004F1DF0 /* MetalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */; };
 		0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */; };
 		06994D70260CC66C00D8FB6B /* AreaFillRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */; };
 		06994D742613189300D8FB6B /* AreaFillShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 06994D732613189300D8FB6B /* AreaFillShader.metal */; };
+		06A78EC8263C358C00D9BF09 /* ColorValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06A78EC7263C358C00D9BF09 /* ColorValue.swift */; };
+		06B960BC2642D8F9006E3BC4 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B960BB2642D8F9006E3BC4 /* ListView.swift */; };
+		06B960C02642DA83006E3BC4 /* ListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B960BF2642DA83006E3BC4 /* ListItemView.swift */; };
+		06B960C2264562BB006E3BC4 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B960C1264562BB006E3BC4 /* ViewExtension.swift */; };
 		06BC1684262EBC5500A30618 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06BC1683262EBC5500A30618 /* VisualEffectView.swift */; };
 		06CB10AF26246851007B2488 /* TestNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CB10AE26246851007B2488 /* TestNode.swift */; };
 		06F4B928263933F700AD8C0A /* ViewRectangleRenderNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06F4B927263933F700AD8C0A /* ViewRectangleRenderNode.swift */; };
@@ -54,17 +58,21 @@
 		0605B36D26024CAA00BAAA9B /* Ray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
 		0605B37026024D4600BAAA9B /* MapPlane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlane.swift; sourceTree = "<group>"; };
 		0605B3732604DE4A00BAAA9B /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		0647EFBC26428E14004BEB23 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0670F7CF25EE75CE004F1DF0 /* MapPlusApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapPlusApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0670F7D225EE75CE004F1DF0 /* MapPlusAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlusAppApp.swift; sourceTree = "<group>"; };
 		0670F7D625EE75CF004F1DF0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0670F7D925EE75CF004F1DF0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0670F7DB25EE75CF004F1DF0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0670F7E325EE760A004F1DF0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0670F7E725EE769A004F1DF0 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
 		0670F7EB25EE7B7F004F1DF0 /* MetalRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderer.swift; sourceTree = "<group>"; };
 		0670F7EE25EE7CF1004F1DF0 /* MetalRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderNode.swift; sourceTree = "<group>"; };
 		06994D6F260CC66C00D8FB6B /* AreaFillRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaFillRenderNode.swift; sourceTree = "<group>"; };
 		06994D732613189300D8FB6B /* AreaFillShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = AreaFillShader.metal; sourceTree = "<group>"; };
+		06A78EC7263C358C00D9BF09 /* ColorValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorValue.swift; sourceTree = "<group>"; };
+		06B960BB2642D8F9006E3BC4 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		06B960BF2642DA83006E3BC4 /* ListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemView.swift; sourceTree = "<group>"; };
+		06B960C1264562BB006E3BC4 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		06BC1683262EBC5500A30618 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		06CB10AE26246851007B2488 /* TestNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNode.swift; sourceTree = "<group>"; };
 		06F4B927263933F700AD8C0A /* ViewRectangleRenderNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRectangleRenderNode.swift; sourceTree = "<group>"; };
@@ -124,10 +132,14 @@
 				0670F7D625EE75CF004F1DF0 /* Assets.xcassets */,
 				0670F7DB25EE75CF004F1DF0 /* Info.plist */,
 				0670F7D825EE75CF004F1DF0 /* Preview Content */,
-				0670F7E325EE760A004F1DF0 /* MainView.swift */,
 				0605B35125FB967800BAAA9B /* Bernburg GEWI.gpx */,
+				06B960BB2642D8F9006E3BC4 /* ListView.swift */,
+				06B960BF2642DA83006E3BC4 /* ListItemView.swift */,
+				06B960C1264562BB006E3BC4 /* ViewExtension.swift */,
 				0605B35625FB994B00BAAA9B /* UserLocationManager.swift */,
+				0647EFBC26428E14004BEB23 /* MainView.swift */,
 				06BC1683262EBC5500A30618 /* VisualEffectView.swift */,
+				06A78EC7263C358C00D9BF09 /* ColorValue.swift */,
 			);
 			path = MapPlusApp;
 			sourceTree = "<group>";
@@ -260,14 +272,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0670F7EC25EE7B7F004F1DF0 /* MetalRenderer.swift in Sources */,
+				06B960C02642DA83006E3BC4 /* ListItemView.swift in Sources */,
+				0647EFBD26428E14004BEB23 /* MainView.swift in Sources */,
 				0605B3742604DE4A00BAAA9B /* Animatable.swift in Sources */,
 				06BC1684262EBC5500A30618 /* VisualEffectView.swift in Sources */,
 				0670F7E825EE769A004F1DF0 /* MetalView.swift in Sources */,
 				0605B34525FA4D3200BAAA9B /* EarthSurfaceNode.swift in Sources */,
 				0670F7D325EE75CE004F1DF0 /* MapPlusAppApp.swift in Sources */,
 				0605B35725FB994B00BAAA9B /* UserLocationManager.swift in Sources */,
+				06B960BC2642D8F9006E3BC4 /* ListView.swift in Sources */,
 				06F8417D25F26B60003F58D6 /* MathLibrary.swift in Sources */,
 				06994D70260CC66C00D8FB6B /* AreaFillRenderNode.swift in Sources */,
+				06B960C2264562BB006E3BC4 /* ViewExtension.swift in Sources */,
 				06F8417925F26489003F58D6 /* TriangleShader.metal in Sources */,
 				0605B34F25FA662600BAAA9B /* MapCamera.swift in Sources */,
 				0605B36726009ED100BAAA9B /* Node.swift in Sources */,
@@ -276,9 +292,9 @@
 				0605B36A2600A7AA00BAAA9B /* SimdExtensions.swift in Sources */,
 				0670F7EF25EE7CF1004F1DF0 /* MetalRenderNode.swift in Sources */,
 				06CB10AF26246851007B2488 /* TestNode.swift in Sources */,
-				0670F7E425EE760A004F1DF0 /* MainView.swift in Sources */,
 				06F4B928263933F700AD8C0A /* ViewRectangleRenderNode.swift in Sources */,
 				0605B37126024D4600BAAA9B /* MapPlane.swift in Sources */,
+				06A78EC8263C358C00D9BF09 /* ColorValue.swift in Sources */,
 				0605B36E26024CAA00BAAA9B /* Ray.swift in Sources */,
 				0605B34B25FA5ABF00BAAA9B /* MTLDeviceExtensions.swift in Sources */,
 			);

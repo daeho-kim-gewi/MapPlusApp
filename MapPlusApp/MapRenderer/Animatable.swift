@@ -122,7 +122,56 @@ public class DoubleValueAnimation: Animation, Animatable {
     public var toValue: Double
 }
 
-public class CameraDistanceValueAnimation: Animation, Animatable {
+public class CameraFocusAnimation: Animation, Animatable {
+    public typealias T = Float
+    
+    public init(from: Float, to: Float, fromLocation: GeoPosition, toLocation: GeoPosition, duration: Double = 0.5, start: Date = Date()) {
+        self.start = start
+        self.fromValue = from
+        self.toValue = to
+        self.duration = duration
+        self.fromLocation = fromLocation
+        self.toLocation = toLocation
+    }
+    
+    public override func animate(camera: MapCameraState) -> MapCameraState {
+        let diff = abs(start.distance(to: Date()))
+        let t = clamp(Double(diff) / Double(duration), min: 0.0, max: 1.0)
+        
+        let dist = interpolate(t: t, a: self.fromValue, b: self.toValue)
+        let pos = interpolate(t: t, a: self.fromLocation, b: self.toLocation)
+        
+        camera.cameraDistance = dist
+        camera.position = pos
+        
+        return camera
+    }
+    
+    private func interpolate(t: Double, a: GeoPosition, b: GeoPosition) -> GeoPosition {
+        let xx = a.X + t * (b.X - a.X)
+        let yy = a.Y + t * (b.Y - a.Y)
+        
+        return GeoPosition(x: xx, y: yy)
+    }
+    
+    private func interpolate(t: Double, a: Float, b: Float) -> Float {
+        return Float(Double(a) + t * Double(b - a))
+    }
+    
+    public override func isCompleted() -> Bool {
+        return self.isEnded()
+    }
+    
+    
+    public var start: Date
+    public var duration: TimeInterval
+    public var fromValue: Float
+    public var toValue: Float
+    public var fromLocation: GeoPosition
+    public var toLocation: GeoPosition
+}
+
+public class CameraDistanceAnimation: Animation, Animatable {
     public typealias T = Float
     
     public init(from: Float, to: Float, duration: Double = 0.5, start: Date = Date()) {

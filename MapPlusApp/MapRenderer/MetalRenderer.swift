@@ -31,7 +31,7 @@ class MetalRenderer: NSObject, MTKViewDelegate {
     
 //        register(node: TestRenderNode())
         register(node: AreaFillRenderNode())
-        
+//        register(node: ViewRectangleRenderNode())
 //        register(node: EarthSurfaceNode())
         
         self.mapTileManager.setup()

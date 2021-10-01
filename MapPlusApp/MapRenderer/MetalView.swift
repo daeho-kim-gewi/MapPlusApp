@@ -35,6 +35,7 @@ class MetalUIKitView : MTKView, ObservableObject {
     private var renderer: MetalRenderer!
     private var lastLocation: CGPoint? = nil
     private var mapCamera: MapCamera
+    private var scheme: Appearance = .light
     
     init(mapCamera: MapCamera) {
         self.mapCamera = mapCamera
@@ -51,7 +52,7 @@ class MetalUIKitView : MTKView, ObservableObject {
         self.delegate = self.renderer
         
         
-        set(scheme: .light)
+        set(scheme: scheme)
     }
     
     required init(coder: NSCoder) {
@@ -66,9 +67,12 @@ class MetalUIKitView : MTKView, ObservableObject {
         }
     }
     
+    public func getAppearance() -> Appearance {
+        return scheme
+    }
+    
     func setupGestures() {
         // setup gestures
-        
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(onPinch(gesture:)))
         self.addGestureRecognizer(pinchGesture)
         
@@ -98,21 +102,23 @@ class MetalUIKitView : MTKView, ObservableObject {
     
     @objc private func onSingleTap(gesture: UITapGestureRecognizer) {
         // single click... ???
-        //         let fingerPosition = gesture.location(in: self)
-        //        print(fingerPosition)
+//        let fingerPosition = gesture.location(in: self)
+//        print(fingerPosition)
     }
     
     @objc private func onDoubleTap(gesture: UITapGestureRecognizer) {
         // double tapped with one finger ... zoom in
-        let tapped = gesture.location(in: self)
-        renderer.zoomIn(tapped)
+        let location = gesture.location(in: self)
+        renderer.zoomIn(location)
     }
     
     @objc private func onTwoFingersDoubleTap(gesture: UITapGestureRecognizer) {
         // double tapped with two fingers... zoom out
+        // TODO: Daeho
         let tapped = gesture.location(in: self)
         renderer.zoomOut(tapped)
     }
+    
     
     @objc private func onPinch(gesture: UIPinchGestureRecognizer) {
         // zoom in or out with two fingers or rotate the map
@@ -122,7 +128,7 @@ class MetalUIKitView : MTKView, ObservableObject {
             self.lastLocation = gesture.location(in: self)
             self.transform.scaledBy(x: scale, y: scale)
         } else if gesture.state == .changed {
-            // var scale = gesture.scale
+            
             // process this scale, zoom the map....
             
             // zoom for position "pinchLocation"
@@ -141,7 +147,6 @@ class MetalUIKitView : MTKView, ObservableObject {
     
     
     @objc private func onPan(gesture: UIPanGestureRecognizer) {
-        // move the map below the finger....
         let location = gesture.location(in: self)
         if gesture.state == .began {
             self.lastLocation = location

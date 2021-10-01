@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="ZoomToFit.svg"
+   id="svg18"
+   version="1.1"
+   viewBox="0 0 22 22">
+  <defs
+     id="defs22" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg18"
+     showgrid="false"
+     id="namedview20"
+     inkscape:window-height="480"
+     inkscape:window-width="640"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <path
+     id="path8"
+     d="M18.8,3.2H14.3V1.6h6.2V7.8H18.8V4.3" />
+  <path
+     id="path10"
+     d="M18.9,17.7V14.3h1.7v6.1H14.4V18.8h4.5" />
+  <path
+     id="path12"
+     d="M3.3,18.9H7.8v1.6H1.7V14.3H3.3v3.5" />
+  <path
+     id="path14"
+     d="M3.2,4.3V7.7H1.6V1.5H7.7V3.2H3.2" />
+  <path
+     id="path16"
+     d="M7.6,11A3.2,3.2,0,0,1,14,11a3.29,3.29,0,0,1-3.2,3.2A3.222,3.222,0,0,1,7.6,11Z" />
+</svg>

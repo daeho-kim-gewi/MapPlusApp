@@ -24,8 +24,8 @@ public class MapCamera: ObservableObject {
     // viewport size as native resolution in physical pixels!!
     private var viewportSize: CGSize = CGSize(width: 2.0, height: 1.0)
     private let near: Float = 0.01
-    private let cameraDistanceRange = 0.00001...200.0
-    
+    private let cameraDistanceRange = 0.012...200.0
+
     private var animations = [Animation]()
     
     public init() {    }
@@ -52,37 +52,59 @@ public class MapCamera: ObservableObject {
             
             self.cameraState.position = GeoPosition(x: self.cameraState.position.X - dx,
                                                     y: self.cameraState.position.Y - dy)
+            
         }
     }
     
-
-    @discardableResult
-    private func scaleDistance(_ fac: Float) -> Bool {
+    private func scaleFocusDistance(_ fac: Float, _ location: float3) {
         let dist = cameraState.cameraDistance * fac
+        
+//        if cameraDistanceRange.contains(Double(dist)) {
+//            animations.append(CameraDistanceAnimation(from: cameraState.cameraDistance,
+//                                                  to: dist,
+//                                                  duration: 0.5, start: Date()))
+        
+        let scale = Double(UIScreen.main.nativeScale)
+        let x: Double = (self.cameraState.position.X + Double(location.x)) / MapTileConstants.FACTOR * scale
+        let y: Double = (self.cameraState.position.Y + Double(location.y)) / MapTileConstants.FACTOR * scale
+
+//        let x: Double = self.cameraState.position.X / MapTileConstants.FACTOR * scale
+//        let y: Double = self.cameraState.position.Y / MapTileConstants.FACTOR * scale
+        
+        
+        
+        // from old CameraPosition to new CameraPosition
+        // how to get Pure New Position?
         if cameraDistanceRange.contains(Double(dist)) {
-            animations.append(CameraDistanceValueAnimation(from: cameraState.cameraDistance,
-                                                  to: dist, duration: 0.5, start: Date()))
-            return true
+            animations.append(CameraFocusAnimation(from: cameraState.cameraDistance, to: dist,
+                                                   fromLocation: cameraState.position,
+                                                   toLocation: GeoPosition(x: x, y: y),
+                                                   duration: 0.5, start: Date()))
+        
+        } else {
+            print(self.cameraState.cameraDistance)
         }
-        return false
     }
     
     public func zoomIn(_ location: CGPoint) {
-        if let _ = self.unproject(point: location) {
-            
-            if scaleDistance(0.5) {
-
-            }
-//            scaleZoom(0.5, center: center)
+        if let location = self.unproject(point: location) {
+            scaleFocusDistance(0.5, location)
         }
     }
     
     public func zoomOut(_ location: CGPoint) {
-        if let _ = self.unproject(point: location) {
-
-            if scaleDistance(2.0) {
-
-            }
+        if let center = self.unproject(point: location) {
+            scaleFocusDistance(2.0, center)
+        }
+    }
+    
+    private func scaleDistance(_ fac: Float) {
+        let dist = cameraState.cameraDistance * fac
+        if cameraDistanceRange.contains(Double(dist)) {
+            animations.append(CameraDistanceAnimation(from: cameraState.cameraDistance,
+                                                  to: dist, duration: 0.5, start: Date()))
+        } else {
+            print(self.cameraState.cameraDistance)
         }
     }
     
@@ -118,8 +140,6 @@ public class MapCamera: ObservableObject {
     }
     
     private func getViewCorners() -> [GeoPosition] {
-      //  print(self.viewportSize)
-        
         let p1 = toWGS84Position(self.unproject(point: CGPoint(x: 0.0,
                                                                y: 0.0)))
         let p2 = toWGS84Position(self.unproject(point: CGPoint(x: Double(self.viewportSize.width),
@@ -155,18 +175,13 @@ public class MapCamera: ObservableObject {
 //        let east = min(center.X + radius, 180.0)
 //        let west = max(center.X - radius, -180.0)
 //
-//   //     print("\(center.X) \(center.Y)")
-//
-////        print("\(east), \(west), \(south), \(north)")
-//
 //        return VMapTileRect(north: north, west: west, south: south, east: east)
     }
     
     
     public func getMapTiles(tileManager: MapTileManager) -> [VMapTile] {
         let rect: VMapTileRect = getVisibleRectangle()
-		//print("visible map rectangle: \(rect.topLeft.X) \(rect.topLeft.Y) - \(rect.bottomRight.X) \(rect.bottomRight.Y)")
-        
+		
         return tileManager.getMapTiles(for: rect)
     }
     
